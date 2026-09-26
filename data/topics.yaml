@@ -1,0 +1,128 @@
+- key: wbc
+  title: "Whole-Body Control & General Motion Tracking"
+  summary: |
+    **Where the field is.** The dominant paradigm is *retarget human motion → train one RL tracking policy → use it as the low-level "motor system"*. 2025 settled the question "can one policy track a whole mocap library?" (GMT, UniTracker, KungfuBot2, BeyondMimic's accurate per-motion recipe), and SONIC (Nov 2025) showed tracking obeys data/model/compute scaling. 2026 work has moved from *coverage* to *what the tracker still fails at*.
+
+    **What people are working on now.**
+    - *Scaling axis disputes*: data (SONIC, HoloMotion's video-reconstructed corpus) vs. architecture (Humanoid-GPT's causal Transformer, HoloMotion's sparse MoE, OmniXtreme's flow-matching base) vs. data curation (EGM, 4 h curated beats more noisy data).
+    - *Long tail and high dynamics*: generality-fidelity trade-off (OmniXtreme, Athena-WBC, Extreme-RGMT). The common recipe is now **specialist experts → DAgger distillation → RL/residual finetune**.
+    - *Reference quality*: retargeted references are physically infeasible (floating, penetration). Three answers: fix references offline (OmniTrack, Perceptive BFM's terrain-conformal synthesis), let the policy down-weight bad reference segments (RGMT's dynamics-conditioned attention), or put a generative layer between reference and tracker (Heracles, GenTrack's generator-tracker co-training).
+    - *Interfaces*: what should the tracker accept? Tokens (SONIC), arbitrary keypoints (AnyBody), SMPL latents (SONIC encoder, RoboGhost), contact prompts (SceneBot), perception (PGMT's terrain glimpses; ViBe's LoRA adapters grafting a frozen ViT onto a frozen SONIC).
+    - *Safety/compliance*: CBF filters around unmodified trackers, compliant tracking (SoftMimic).
+
+    **Unsolved.**
+    1. **No shared benchmark**: every paper wins on its own protocol; HumanTracker is the first serious attempt. "Beats SONIC" claims are mostly qualitative, and when the released SONIC is run under someone else's protocol the numbers swing (e.g., 79.3% completion on Heracles' held-out set).
+    2. **Tracking ≠ task competence**: trackers execute whatever reference they get; the bottleneck has moved to *who produces a good reference* (planner, VLA, generator).
+    3. **Interaction beyond feet**: object contact, force regulation and scene contact are bolted on (residuals, contact prompts) rather than native.
+    4. **Embodiment monoculture**: nearly all real-robot results are on Unitree G1; cross-embodiment trackers are early.
+    5. **Global drift and closed-loop state** for long sequences still depend on external localization.
+
+- key: locomanip
+  title: "Loco-Manipulation & Humanoid-Object Interaction"
+  summary: |
+    **Where the field is.** Two stacks coexist: (a) *hierarchical* — a planner/VLA outputs end-effector or keypoint targets and a whole-body tracker executes (AMO, ULC, HiWET, VisualMimic, BifrostUMI); (b) *task-specific RL* with object-aware rewards, often as a residual on a general tracker (ResMimic, HDMI, Weave).
+
+    **What people are working on now.**
+    - *Data from humans*: HOI mocap and human video → retargeted interaction references (HDMI, HumanX, SUGAR, ULTRA, Weave).
+    - *Force*: payload-aware and force-adaptive control (FALCON, FAME, SplitAdapter, HAFO, Thor); force references from trajectory optimization (Opt2VLA).
+    - *Dexterity + whole body jointly* (Weave commands 29 body + 12 finger joints) rather than arms-only manipulation on a walking base.
+    - *World-frame / long-horizon consistency* (HiWET, LessMimic's distance fields).
+
+    **Unsolved.**
+    1. **Generalization to unseen objects/sequences**: Weave's 92.5% → 65.0% trained-vs-unseen gap is typical.
+    2. **Object state in the real world** often still comes from mocap/markers; vision-based object tracking under occlusion by the robot's own body is weak.
+    3. **Force sensing**: almost all methods infer contact force from proprioception; tactile/force skins are rare (TACT).
+    4. **Heavy, articulated, or deformable objects** remain largely unaddressed.
+    5. **Per-task training** is still the norm; a single loco-manipulation policy spanning many tasks is not yet demonstrated reliably.
+
+- key: vla
+  title: "VLA, Foundation Models & Language-Conditioned Control"
+  summary: |
+    **Where the field is.** Humanoid VLAs almost universally sit *on top of* a learned whole-body controller (GR00T N1.x, Psi-0, WholeBodyVLA, HAF, OpenHLM). Language-to-motion work (LangWBC, RoboGhost, SENTINEL, TextOp, FRoM-W1) drives trackers from text without scene grounding.
+
+    **What people are working on now.**
+    - *Action-space choice*: joint space vs SMPL vs latent tokens vs end-effector. OpenHLM finds joint-space whole-body teleop data beats SMPL (88% vs 75% task progress) because SMPL's redundant dims make VLA learning harder.
+    - *Pretraining sources*: egocentric human video (Psi-0), non-humanoid robot data (OpenHLM transfer), world-action models (WholeBodyWAM).
+    - *VLA–WBC interface*: grounding pretrained priors in WBC commands, reducing sensitivity to which WBC is used.
+    - *Force-aware VLAs* (Opt2VLA, FWBC-VLA).
+
+    **Unsolved.**
+    1. **Interface mismatch**: VLAs emit targets the WBC cannot execute; there is no feedback path from WBC feasibility to the VLA.
+    2. **Lower body is underused**: most VLAs treat legs as a mobile base; squatting, kneeling, using the body as a manipulator are rare.
+    3. **Evaluation**: tiny task suites, single platforms, no shared real-world benchmark.
+    4. **Latency** of large models vs. high-rate whole-body control.
+    5. **Language-to-motion lacks scene grounding**; text-only systems cannot do tasks.
+
+- key: teleop
+  title: "Teleoperation, Data Collection & Learning from Human Data"
+  summary: |
+    **Where the field is.** Whole-body teleop moved from mocap studios (TWIST) to portable VR (TWIST2, Teleopit, CLONE) and now to **robot-free** collection (HuMI, EgoHumanoid, BifrostUMI, ZeroWBC) mirroring what UMI did for arms. Human video (VideoMimic) is used both as motion data and as scene data.
+
+    **What people are working on now.**
+    - *Full embodiment*: body + dexterous hands + active head in one system (Teleopit, OmniClone).
+    - *Drift and latency*: closed-loop global tracking (CLOT, CLONE), extremity-level control (ExtremControl), intent prediction from motion priors (TeleGate).
+    - *Robot-free data*: egocentric/UMI-style devices, then retarget to humanoid.
+    - *Pipelines ready for VLA post-training* (OmniClone → GR00T N1.6; OpenHLM).
+
+    **Unsolved.**
+    1. **Throughput and cost**: whole-body humanoid data remains orders of magnitude smaller than arm data.
+    2. **No force/haptic feedback** for whole-body teleop; operators cannot feel contacts.
+    3. **Embodiment gap** in robot-free data (reach, gait, hands) is handled ad hoc by retargeting.
+    4. **Leg tracking from VR** is noisy; sparse-input teleop leaves the legs to the policy's guess.
+
+- key: retarget
+  title: "Motion Retargeting & Reference Generation"
+  summary: |
+    **Where the field is.** "Retargeting matters" (GMR) became consensus: artifacts in references directly cap tracking quality. The field is moving from kinematic IK to **interaction-preserving** (OmniRetarget), **physics-aware** (ReActor, DynaRetarget, ULTRA's RL retargeting, OmniTrack's reference stage), and **neural** retargeters (NMR, UMR).
+
+    **Unsolved.**
+    1. **Morphology-specific**: most learned retargeters must be retrained per robot.
+    2. **Contacts and forces are not retargeted**, only kinematics (with the exception of interaction-mesh methods).
+    3. **Hands**: body retargeting and dexterous hand retargeting are still separate problems.
+    4. Whether to retarget at all is open: SMPL-native / latent-conditioned controllers (SONIC encoder, AnyBody, RoboGhost) try to skip it, but OpenHLM's result shows SMPL is not a free win as a VLA action space.
+
+- key: loco
+  title: "Locomotion (Blind, Perceptive, Parkour)"
+  summary: |
+    **Where the field is.** Blind flat-ground walking is solved and cheap (minutes of training). Current effort is **perceptive, agile traversal**: sparse footholds (BeamDojo, Echo in the Steps, PLANC), parkour and whole-body parkour (Hiking in the Wild, Deep Whole-body Parkour, Perceptive Humanoid Parkour), 3D constrained spaces (Gallant), and ladders/platforms (LadderMan, APEX).
+
+    **What people are working on now.**
+    - *Perception representation*: heightmap → voxels → raw depth → raw pixels (Now You See That); active gaze (TAGA).
+    - *Human-likeness*: motion generation + tracking (ETH), motion matching of human skills, residual style experts.
+    - *Cross-embodiment pretraining* (H-Zero, LocoFormer, cross-humanoid WBC).
+    - *Fast/robust training* (FastTD3, 15-minute sim-to-real, test-time training for parkour).
+
+    **Unsolved.**
+    1. **Perception robustness**: reflective, transparent, deformable, vegetated terrain; lighting changes.
+    2. **Compliant and deformable ground** is poorly simulated.
+    3. **Integration with navigation** over long ranges and memory is still shallow.
+    4. **Energy efficiency** at human-comparable levels.
+    5. **Evaluation**: terrain courses are lab-specific; no standard benchmark.
+
+- key: robust
+  title: "Sim-to-Real, Adaptation, Robustness & Fall Safety"
+  summary: |
+    **Where the field is.** Domain randomization alone is no longer enough for agile whole-body skills. Main tools: **learned dynamics correction** (ASAP delta-action), **residual adaptation** on generalist policies (MOSAIC, FAST), **system identification** (SPI-Active), **multi-simulator** training (PolySim), and **pretrain-then-finetune** (LIFT). Fall safety became its own sub-area (getting up, protective falls, unified fall-safety).
+
+    **Unsolved.**
+    1. **Actuator modeling** (torque-speed limits, thermal, backlash) is the real bottleneck for highly dynamic motions.
+    2. **Real-data cost** for adaptation: every residual/delta model needs rollouts on hardware.
+    3. **Formal safety** around learned controllers is limited to modeled constraints.
+    4. **Compliance** is mostly inferred from proprioception; task-dependent stiffness is not specified by higher layers.
+
+- key: sports
+  title: "Sports & Athletic Skills"
+  summary: |
+    **Where the field is.** Table tennis, badminton, soccer, tennis, boxing and skateboarding all have humanoid demos. Common recipe: **perception/prediction module + human motion priors + RL whole-body controller**, often hierarchical (HITTER).
+
+    **Unsolved.**
+    1. Every system is **single-sport and task-specific**; no transfer between sports.
+    2. **Ball perception latency** from onboard sensors (many rely on external mocap).
+    3. **Multi-agent** play (teams, opponents) and safety in contact sports.
+
+- key: bench
+  title: "Benchmarks, Datasets & Simulation"
+  summary: |
+    **Where the field is.** Evaluation lags behind methods. Tracking benchmarks (HumanTracker, difficulty-stratified benchmarks), human-likeness tests, physically grounded motion datasets (PHUMA), real humanoid manipulation datasets (Humanoid Everyday) and simulation platforms (Genie Sim) are starting to appear.
+
+    **Unsolved.** A shared, real-robot-validated benchmark for whole-body control and loco-manipulation does not exist; most claims remain protocol-dependent.

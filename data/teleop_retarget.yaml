@@ -1,0 +1,200 @@
+topic: teleop
+papers:
+- id: '2609.07933'
+  name: SPOT
+  title: 'SPOT: Spatial Perception-Oriented Long-Horizon Humanoid Teleoperation'
+  venue: arXiv
+  depth: T
+  novelty: Teleoperation system centered on the operator's spatial perception for long-horizon tasks.
+  limitation: Operator-side perception improvements do not reduce the embodiment gap in control.
+- id: '2608.01834'
+  name: Teleopit
+  title: 'Teleopit: A Full-Embodiment Humanoid Teleoperation System'
+  venue: arXiv
+  depth: A
+  novelty: 'VR-only full-embodiment teleop: body tracker (history encoder + failure-aware rewind sampling), tuning-free dexterous hand retargeter, 2-DoF active head.'
+  limitation: Evaluation is component-level plus demos; no large-scale policy-learning study on collected data.
+- id: '2605.03452'
+  name: BifrostUMI
+  title: 'BifrostUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation'
+  venue: arXiv
+  depth: A
+  novelty: 'Robot-free data: PICO body tracking as 5 keypoints + UMI-style camera grippers; diffusion policy predicts keypoints, a WBC executes.'
+  limitation: Five keypoints lose leg/foot detail; performance is bounded by the keypoint retargeter and WBC.
+- id: '2603.14327'
+  name: OmniClone
+  title: 'OmniClone: Engineering a Robust, All-Rounder Whole-Body Humanoid Teleoperation System'
+  venue: arXiv
+  depth: A
+  novelty: Engineering-focused robust whole-body teleop with a data pipeline directly compatible with GR00T N1.6 post-training.
+  limitation: Contribution is mostly systems integration; algorithmic novelty is limited.
+- id: '2603.09170'
+  name: ZeroWBC
+  title: 'ZeroWBC: Learning Natural Visuomotor Humanoid Control Directly from Human Egocentric Video'
+  venue: arXiv
+  depth: T
+  novelty: Learns visuomotor whole-body control directly from egocentric human video, without robot teleop.
+  limitation: Ego-video lacks full-body state and force; human-robot dynamics gap handled by the tracker.
+- id: '2602.15060'
+  name: CLOT
+  title: 'CLOT: Closed-Loop Global Motion Tracking for Whole-Body Humanoid Teleoperation'
+  venue: arXiv
+  depth: T
+  novelty: Closes the loop on global position to remove drift during whole-body teleop.
+  limitation: Requires external/global localization; drift correction may fight operator intent.
+- id: '2602.11321'
+  name: ExtremControl
+  title: 'ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control'
+  venue: arXiv
+  depth: T
+  novelty: Directly commands extremities (hands/feet) to cut teleop latency.
+  limitation: Extremity-level control leaves posture to the controller; less expressive.
+- id: '2602.10106'
+  name: EgoHumanoid
+  title: 'EgoHumanoid: Unlocking In-the-Wild Loco-Manipulation with Robot-Free Egocentric Demonstration'
+  venue: RSS 2026
+  depth: T
+  novelty: Robot-free egocentric demonstrations collected in the wild train humanoid loco-manipulation.
+  limitation: Human-humanoid embodiment gap in reach, gait and hand; alignment step required.
+- id: '2602.09628'
+  name: TeleGate
+  title: 'TeleGate: Whole-Body Humanoid Teleoperation via Gated Expert Selection with Motion Prior'
+  venue: arXiv
+  depth: T
+  novelty: Gated expert selection plus a VAE motion prior that infers near-future intent from history; trained on ~2.5 h mocap.
+  limitation: Small training corpus; unusual operator motions fall outside the prior.
+- id: '2602.06643'
+  name: HuMI
+  title: 'Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations'
+  venue: arXiv
+  depth: T
+  novelty: UMI-style robot-free interface for whole-body humanoid manipulation data.
+  limitation: Whole-body posture must be inferred/retargeted; no force data.
+- id: '2602.01632'
+  name: Closed-Form Retarget Teleop
+  title: A Closed-Form Geometric Retargeting Solver for Upper Body Humanoid Robot Teleoperation
+  venue: arXiv
+  depth: T
+  novelty: Closed-form geometric solver replaces iterative IK for fast upper-body teleop retargeting.
+  limitation: Upper body only; closed form depends on specific kinematic structure.
+- id: '2511.12390'
+  name: Adaptive Neural Teleop
+  title: Learning Adaptive Neural Teleoperation for Humanoid Robots
+  venue: arXiv
+  depth: T
+  novelty: Neural teleop mapping that adapts to operator and task.
+  limitation: Adaptation data per operator required.
+- id: '2511.02832'
+  name: TWIST2
+  title: 'TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System'
+  venue: arXiv
+  depth: A
+  novelty: Portable mocap-free (PICO VR) whole-body teleop with an active neck; hierarchical visuomotor policy trained on collected data.
+  limitation: VR body tracking is noisy for legs; data throughput still far below arm-only UMI-style data.
+- id: '2510.04353'
+  name: Stability-Aware Retarget
+  title: Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation
+  venue: arXiv
+  depth: T
+  novelty: Retargeting that accounts for support-polygon stability during multi-contact teleop.
+  limitation: Quasi-static stability assumptions.
+- id: '2510.03022'
+  name: HumanoidExo
+  title: 'HumanoidExo: Scalable Whole-Body Humanoid Manipulation via Wearable Exoskeleton'
+  venue: arXiv
+  depth: T
+  novelty: Wearable exoskeleton captures whole-body human demonstrations for humanoid policy learning.
+  limitation: Exoskeleton hardware cost and operator fatigue; kinematic mismatch remains.
+- id: '2508.00162'
+  name: CHILD
+  title: 'CHILD: Controller for Humanoid Imitation and Live Demonstration'
+  venue: Humanoids 2025
+  depth: T
+  novelty: Joint-level puppet/exo-style controller for whole-body humanoid teleop.
+  limitation: Hardware is platform-specific.
+- id: '2506.08931'
+  name: CLONE
+  title: 'CLONE: Closed-Loop Whole-Body Humanoid Teleoperation for Long-Horizon Tasks'
+  venue: CoRL 2025
+  depth: A
+  novelty: MoE whole-body policy driven by MR head+hand poses; LiDAR odometry closed loop cuts drift to ~12 cm over ~9 m.
+  limitation: Sparse input leaves leg motion to the policy; LiDAR odometry required.
+- id: '2505.19530'
+  name: Haptic Heavy Lifting
+  title: Heavy lifting tasks via haptic teleoperation of a wheeled humanoid
+  venue: Humanoids 2025
+  depth: T
+  novelty: Haptic feedback teleop for heavy lifting with a wheeled humanoid.
+  limitation: Wheeled platform; bipedal balance not addressed.
+- id: '2505.03729'
+  name: VideoMimic
+  title: 'VideoMimic: Visual Imitation Enables Contextual Humanoid Control'
+  venue: CoRL 2025 (Oral)
+  depth: A
+  novelty: 'Real-to-sim-to-real from casual video: jointly reconstruct human + scene, train one context-conditioned policy (stairs, sitting).'
+  limitation: Reconstruction quality limits skills; environment variety is small.
+- id: '2505.02833'
+  name: TWIST
+  title: 'TWIST: Teleoperated Whole-Body Imitation System'
+  venue: CoRL 2025
+  depth: A
+  novelty: Mocap-driven real-time whole-body teleop with a single RL+BC tracker trained on retargeted data.
+  limitation: Requires an optical mocap studio (addressed by TWIST2).
+- id: '2502.13013'
+  name: HOMIE
+  title: 'HOMIE: Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit'
+  venue: RSS 2025
+  depth: A
+  novelty: Low-cost isomorphic arm exoskeleton + pedals for locomotion; RL lower body supports squatting while walking.
+  limitation: Lower body is velocity-commanded, not whole-body imitation.
+topic2: retarget
+papers2:
+- id: '2609.02134'
+  name: UMR
+  title: Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence
+  venue: arXiv
+  depth: A
+  novelty: Learned point-cloud correspondence retargets actor-specific body shapes without per-actor configs; gains show up in downstream SONIC training.
+  limitation: Kinematic retargeting; physical feasibility and contacts left to the tracker.
+- id: '2605.06593'
+  name: ReActor
+  title: 'ReActor: Reinforcement Learning for Physics-Aware Motion Retargeting'
+  venue: arXiv
+  depth: T
+  novelty: RL-based retargeting yields physically feasible robot motions rather than kinematic matches.
+  limitation: Costly per-dataset RL; quality depends on sim fidelity.
+- id: '2603.22201'
+  name: NMR
+  title: 'Make Tracking Easy: Neural Motion Retargeting for Humanoid Whole-body Control'
+  venue: arXiv
+  depth: A
+  novelty: Temporal-attention neural retargeter; removes joint jumps, cuts self-collision and joint-limit violations, and suppresses upstream SMPL noise.
+  limitation: Morphology-specific data pipeline; new robots require regenerating training data.
+- id: '2602.06827'
+  name: DynaRetarget
+  title: 'DynaRetarget: Dynamically-Feasible Retargeting using Sampling-Based Trajectory Optimization'
+  venue: arXiv
+  depth: T
+  novelty: Sampling-based trajectory optimization produces dynamically feasible retargeted motions.
+  limitation: Offline and compute-heavy; not suited to live teleop.
+- id: '2510.02252'
+  name: GMR
+  title: 'Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking'
+  venue: arXiv
+  depth: A
+  novelty: Shows retargeting artifacts materially hurt tracking; releases a fast general retargeter (GMR) now widely used.
+  limitation: Kinematic IK; does not enforce dynamics or object contacts.
+- id: '2509.26633'
+  name: OmniRetarget
+  title: 'OmniRetarget: Interaction-Preserving Data Generation for Humanoid Whole-Body Loco-Manipulation and Scene Interaction'
+  venue: arXiv
+  depth: A
+  novelty: Interaction-mesh optimization preserves body-object/terrain contacts; augments one demo into many; proprioceptive-only policies learn parkour-like interaction.
+  limitation: Kinematic optimization; requires object/terrain geometry; dynamics still handled downstream.
+- id: '2509.15443'
+  name: IKMR
+  title: Implicit Kinodynamic Motion Retargeting for Human-to-humanoid Imitation Learning
+  venue: arXiv
+  depth: T
+  novelty: Learns an implicit kinodynamic retargeter that respects robot dynamics.
+  limitation: Implicit model hard to inspect; generalization to OOD motions uncertain.

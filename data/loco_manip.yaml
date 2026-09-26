@@ -1,0 +1,352 @@
+topic: locomanip
+papers:
+- id: '2609.19340'
+  name: ViLoMan
+  title: 'ViLoMan: Learning Visual-Proprioceptive Whole-Body Loco-Manipulation Skills for Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Fuses vision with proprioception inside the whole-body loco-manipulation policy rather than only at a high level.
+  limitation: Visual sim-to-real gap for manipulated objects; skill set limited to trained tasks.
+- id: '2609.16683'
+  name: Weave
+  title: 'Weave: Learning Whole-Body Dexterous Loco-Manipulation from Human-Object Interactions'
+  venue: arXiv
+  depth: A
+  novelty: Contact- and geometry-aware policy jointly commanding 29 body + 12 finger joints across multi-object HOI sequences; releases ~23 h of executed rollouts.
+  limitation: 'Clear generalization gap: 92.5% on trained vs 65.0% on unseen interaction sequences.'
+- id: '2609.01518'
+  name: IHMC Behavior System
+  title: A System for Fast, Resilient, and Adaptable Loco-Manipulation Behaviors on Humanoid Robots
+  venue: arXiv
+  depth: A
+  novelty: Runtime-editable, robot-local behavior authoring architecture; argues architecture itself drives speed and reliability.
+  limitation: Behavior authoring relies on expert engineering, not learning; scaling to open-ended tasks is manual.
+- id: '2606.26201'
+  name: OmniContact
+  title: 'OmniContact: Chaining Meta-Skills via Contact Flow for Generalizable Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Represents tasks as a flow of contacts and chains reusable meta-skills along it.
+  limitation: Contact-flow must be specified or planned upstream; skill library bounds what can be chained.
+- id: '2606.09286'
+  name: VAIC
+  title: 'VAIC: Vision-Guided Humanoid Agile Object Interaction Control via Decoupled Commands'
+  venue: arXiv
+  depth: T
+  novelty: Vision-guided agile object interaction with decoupled body/object commands (extends HAIC-style agility to perception).
+  limitation: Decoupled commands can miss tight body-object coupling in fast interactions.
+- id: '2606.03297'
+  name: SplitAdapter
+  title: 'SplitAdapter: Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation'
+  venue: arXiv
+  depth: T
+  novelty: Factorizes adaptation to unknown payloads so locomotion and arm control each compensate for load.
+  limitation: Handles load as a dynamics parameter; articulated or shifting loads are harder.
+- id: '2605.20373'
+  name: SUGAR
+  title: 'SUGAR: A Scalable Human-Video-Driven Generalizable Humanoid Loco-Manipulation Learning Framework'
+  venue: arXiv
+  depth: T
+  novelty: Uses human videos as the main scalable supervision source for loco-manipulation; code released.
+  limitation: Video-derived object/hand states are noisy; force information is absent from video.
+- id: '2603.14308'
+  name: Load-Aware Loco
+  title: Load-Aware Locomotion Control for Humanoid Robots in Industrial Transportation Tasks
+  venue: arXiv
+  depth: T
+  novelty: Locomotion controller conditioned on carried load for industrial transport.
+  limitation: Transport-focused; dexterous interaction with the load is out of scope.
+- id: '2603.10306'
+  name: SteadyTray
+  title: 'SteadyTray: Learning Object Balancing Tasks in Humanoid Tray Transport via Residual Reinforcement Learning'
+  venue: arXiv
+  depth: T
+  novelty: Residual RL on top of a locomotion policy to keep objects balanced on a tray while walking.
+  limitation: Single task family; residual depends on base policy's gait.
+- id: '2603.08961'
+  name: FAME
+  title: 'FAME: Force-Adaptive RL for Expanding the Manipulation Envelope of a Full-Scale Humanoid'
+  venue: arXiv
+  depth: T
+  novelty: Force-adaptive RL lets a full-size humanoid keep balance under larger interaction forces.
+  limitation: Force estimation from proprioception is indirect; no tactile/force sensing at contact.
+- id: '2603.03279'
+  name: ULTRA
+  title: 'ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation'
+  venue: IROS 2026
+  depth: A
+  novelty: RL-based neural retargeting of SMPL-X+object data, distilled into a latent multimodal controller, RL-finetuned for OOD; runs from perception/sparse goals.
+  limitation: Skill coverage bounded by the retargeted HOI corpus; idealized-control retargeting stage needs separate robustness training.
+- id: '2602.21723'
+  name: LessMimic
+  title: 'LessMimic: Long-Horizon Humanoid Interaction with Unified Distance Field Representations'
+  venue: arXiv
+  depth: T
+  novelty: Distance-field representation of scene/objects unifies long-horizon interactions without dense references.
+  limitation: Distance fields need object geometry; deformables and articulated objects are hard to represent.
+- id: '2602.16705'
+  name: Open-Vocab EE Control
+  title: Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation
+  venue: arXiv
+  depth: T
+  novelty: Accurate whole-body end-effector control interface paired with open-vocabulary visual perception.
+  limitation: EE interface underuses lower body as a manipulator; grasp-level dexterity is limited.
+- id: '2602.13850'
+  name: Humanoid Hanoi
+  title: 'Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement'
+  venue: arXiv
+  depth: T
+  novelty: Studies whether one shared whole-body controller can serve a sequence of box-rearrangement skills.
+  limitation: Box rearrangement is a narrow task family; findings may not transfer to dexterous tasks.
+- id: '2602.11758'
+  name: HAIC
+  title: 'HAIC: Humanoid Agile Object Interaction Control via Dynamics-Aware World Model'
+  venue: arXiv
+  depth: T
+  novelty: Dynamics-aware world model predicts object dynamics to enable agile interactions (e.g., catching/pushing).
+  limitation: World model accuracy on unseen object properties limits generalization.
+- id: '2602.06341'
+  name: HiWET
+  title: 'HiWET: Hierarchical World-Frame End-Effector Tracking for Long-Horizon Humanoid Loco-Manipulation'
+  venue: RSS 2026
+  depth: T
+  novelty: World-frame (not body-frame) end-effector tracking removes drift in long-horizon loco-manipulation.
+  limitation: Requires reliable global state estimation; EE-only interface.
+- id: '2602.02473'
+  name: HumanX
+  title: 'HumanX: Toward Agile and Generalizable Humanoid Interaction Skills from Human Videos'
+  venue: arXiv
+  depth: T
+  novelty: Extracts agile interaction skills (with objects/people) from human videos for humanoids.
+  limitation: Video reconstruction errors on fast motions; object dynamics not observed.
+- id: '2601.17440'
+  name: PILOT
+  title: 'PILOT: A Perceptive Integrated Low-level Controller for Loco-manipulation over Unstructured Scenes'
+  venue: arXiv
+  depth: T
+  novelty: Low-level loco-manipulation controller that integrates terrain perception for unstructured scenes.
+  limitation: High-level task reasoning remains external.
+- id: '2601.09518'
+  name: H2H Interaction
+  title: Learning Whole-Body Human-Humanoid Interaction from Human-Human Demonstrations
+  venue: arXiv
+  depth: T
+  novelty: Uses human-human interaction data to learn physical human-humanoid interaction.
+  limitation: Safety guarantees for physical HRI are not formal.
+- id: '2512.25072'
+  name: Choice Policies
+  title: Coordinated Humanoid Manipulation with Choice Policies
+  venue: arXiv
+  depth: T
+  novelty: Policy class that selects among multiple candidate action modes to coordinate humanoid manipulation.
+  limitation: Mode set is finite and pre-defined by the architecture.
+- id: '2511.21169'
+  name: Force-Capable Loco-Manip
+  title: Kinematics-Aware Multi-Policy Reinforcement Learning for Force-Capable Humanoid Loco-Manipulation
+  venue: arXiv
+  depth: T
+  novelty: Multiple kinematics-aware policies allow exerting large forces while walking.
+  limitation: Policy switching adds discontinuity risk; force targets must be specified.
+- id: '2511.20275'
+  name: HAFO
+  title: 'HAFO: A Force-Adaptive Control Framework for Humanoid Robots in Intense Interaction Environments'
+  venue: arXiv
+  depth: T
+  novelty: Force-adaptive framework for staying stable under intense external interaction.
+  limitation: Disturbance models used in training may not cover real-world contact profiles.
+- id: '2511.15200'
+  name: VIRAL
+  title: 'VIRAL: Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: A
+  novelty: Large-scale rendered teacher-student RGB policies trained purely in sim transfer zero-shot to real loco-manipulation.
+  limitation: Very heavy compute; task-specific policies and hand-built sim scenes.
+- id: '2511.14756'
+  name: HMC
+  title: 'HMC: Learning Heterogeneous Meta-Control for Contact-Rich Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Meta-controller blends heterogeneous control modes (position/force/compliance) for contact-rich tasks.
+  limitation: Mode blending learned per task family.
+- id: '2511.04679'
+  name: GentleHumanoid
+  title: 'GentleHumanoid: Learning Upper-body Compliance for Contact-rich Human and Object Interaction'
+  venue: arXiv
+  depth: T
+  novelty: Learned upper-body compliance for safe hugging/contact with humans and objects.
+  limitation: Compliance limited to upper body; lower body remains stiff tracking.
+- id: '2510.26280'
+  name: Thor
+  title: 'Thor: Towards Human-Level Whole-Body Reactions for Intense Contact-Rich Environments'
+  venue: arXiv
+  depth: T
+  novelty: Whole-body reactions to strong contact forces (pushing/pulling heavy objects).
+  limitation: Relies on proprioceptive force inference; no distributed tactile sensing.
+- id: '2510.14293'
+  name: H2H Co-Carry
+  title: Learning Human-Humanoid Coordination for Collaborative Object Carrying
+  venue: arXiv
+  depth: T
+  novelty: Humanoid infers human partner intent through the carried object to co-transport it.
+  limitation: Single-object collaborative carrying; intent inference only via object forces/motion.
+- id: '2510.11258'
+  name: DemoHLM
+  title: 'DemoHLM: From One Demonstration to Generalizable Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Synthesizes large sim data from one demonstration to train generalizable loco-manipulation.
+  limitation: Augmentation covers object pose variation more than new object categories.
+- id: '2510.11072'
+  name: PhysHSI
+  title: 'PhysHSI: Towards a Real-World Generalizable and Natural Humanoid-Scene Interaction System'
+  venue: arXiv
+  depth: T
+  novelty: Real-world system for natural humanoid-scene interaction (sit, lie, carry) with AMP-style priors plus perception.
+  limitation: Scene interaction set is small; localization errors affect contact placement.
+- id: '2510.05070'
+  name: ResMimic
+  title: 'ResMimic: From General Motion Tracking to Humanoid Whole-Body Loco-Manipulation via Residual Learning'
+  venue: arXiv
+  depth: A
+  novelty: Residual policy on top of a pretrained general tracker plus object-tracking/contact rewards for heavy whole-body manipulation.
+  limitation: Per-task residual training with object mocap references; no vision-based autonomy.
+- id: '2509.21231'
+  name: SEEC
+  title: 'SEEC: Stable End-Effector Control with Model-Enhanced Residual Learning for Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Model-based compensation + residual RL keeps end-effector stable during walking.
+  limitation: EE stabilization only; no whole-body contact use.
+- id: '2509.20322'
+  name: VisualMimic
+  title: 'VisualMimic: Visual Humanoid Loco-Manipulation via Motion Tracking and Generation'
+  venue: arXiv
+  depth: T
+  novelty: Hierarchy of visual keypoint generator + low-level tracker, trained in sim, zero-shot real for pushing/kicking objects.
+  limitation: Simplified object interactions; limited dexterity.
+- id: '2509.16757'
+  name: HDMI
+  title: 'HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos'
+  venue: arXiv
+  depth: A
+  novelty: Human videos -> retargeted HOI references; unified object representation and contact rewards train interactive policies (doors, boxes).
+  limitation: One policy per interaction; object states in real deployment come from mocap/markers.
+- id: '2509.14353'
+  name: DreamControl
+  title: 'DreamControl: Human-Inspired Whole-Body Humanoid Control for Scene Interaction via Guided Diffusion'
+  venue: arXiv
+  depth: T
+  novelty: Guided diffusion over human motion priors generates references; RL tracks them for scene interaction.
+  limitation: Two-stage generation + tracking; diffusion guidance slows iteration.
+- id: '2509.13534'
+  name: Bulky Objects
+  title: 'Embracing Bulky Objects with Humanoid Robots: Whole-Body Manipulation with Reinforcement Learning'
+  venue: arXiv
+  depth: T
+  novelty: Uses arms and torso to hug and carry bulky objects with RL whole-body contact.
+  limitation: Object shape priors assumed; no fine dexterity.
+- id: '2509.13200'
+  name: StageACT
+  title: 'StageACT: Stage-Conditioned Imitation for Robust Humanoid Door Opening'
+  venue: arXiv
+  depth: T
+  novelty: Stage conditioning in ACT improves robustness in multi-stage door opening.
+  limitation: Task-specific; stage labels required.
+- id: '2509.11839'
+  name: TrajBooster
+  title: 'TrajBooster: Boosting Humanoid Whole-Body Manipulation via Trajectory-Centric Learning'
+  venue: arXiv
+  depth: T
+  novelty: Retargets end-effector trajectories from other embodiments to bootstrap humanoid whole-body VLA data.
+  limitation: Trajectory-level transfer ignores embodiment-specific contact strategies.
+- id: '2508.16943'
+  name: HumanoidVerse
+  title: 'HumanoidVerse: A Versatile Humanoid for Vision-Language Guided Multi-Object Rearrangement'
+  venue: arXiv
+  depth: T
+  novelty: Vision-language-guided multi-object rearrangement with a single humanoid policy.
+  limitation: Sim-centric evaluation.
+- id: '2508.14099'
+  name: Humanoid TAMP
+  title: Task and Motion Planning for Humanoid Loco-manipulation
+  venue: Humanoids 2025
+  depth: T
+  novelty: Classical TAMP formulation extended to humanoid loco-manipulation with contact planning.
+  limitation: Model-based planning is slow and depends on accurate models.
+- id: '2507.06905'
+  name: ULC
+  title: 'ULC: A Unified and Fine-Grained Controller for Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Single controller accepting fine-grained commands for base, torso height, and arms simultaneously.
+  limitation: Command interface is hand-designed; no expressive whole-body motion.
+- id: '2506.15146'
+  name: TACT
+  title: 'TACT: Humanoid Whole-body Contact Manipulation through Deep Imitation Learning with Tactile Modality'
+  venue: RA-L 2025
+  depth: T
+  novelty: Adds distributed tactile sensing to imitation learning for whole-body contact manipulation.
+  limitation: Requires tactile skin hardware; small demonstration sets.
+- id: '2506.09366'
+  name: SkillBlender
+  title: 'SkillBlender: Towards Versatile Humanoid Whole-Body Loco-Manipulation via Skill Blending'
+  venue: arXiv
+  depth: T
+  novelty: Pretrains primitive skills, then blends them for new loco-manipulation tasks with little reward engineering.
+  limitation: Primarily sim benchmark; blending bounded by primitive set.
+- id: '2506.04147'
+  name: SLAC
+  title: 'SLAC: Simulation-Pretrained Latent Action Space for Whole-Body Real-World Reinforcement Learning'
+  venue: CoRL 2025
+  depth: T
+  novelty: Pretrains a safe latent action space in low-fidelity sim so real-world RL on whole-body tasks becomes sample-efficient.
+  limitation: Demonstrated on mobile manipulators more than legged humanoids; latent space fixes reachable behaviors.
+- id: '2505.24198'
+  name: Hold My Beer
+  title: Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control
+  venue: CoRL 2025
+  depth: T
+  novelty: Decouples gentle locomotion from end-effector stabilization so carried objects stay steady.
+  limitation: Stabilization, not manipulation; object interaction limited to holding.
+- id: '2505.19086'
+  name: MaskedManipulator
+  title: 'MaskedManipulator: Versatile Whole-Body Control for Loco-Manipulation'
+  venue: SIGGRAPH Asia 2025
+  depth: T
+  novelty: Masked-inpainting controller (MaskedMimic line) extended to object-centric loco-manipulation goals.
+  limitation: Physics-character setting; not deployed on hardware.
+- id: '2505.10918'
+  name: R2S2
+  title: Unleashing Humanoid Reaching Potential via Real-world-Ready Skill Space
+  venue: arXiv
+  depth: T
+  novelty: Builds a real-world-ready skill space to expand humanoid reaching workspace (squat, lean, step).
+  limitation: Reaching only; grasping/force tasks out of scope.
+- id: '2505.06776'
+  name: FALCON
+  title: 'FALCON: Learning Force-Adaptive Humanoid Loco-Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Dual-agent (upper/lower) RL with 3D force curriculum and torque-limit awareness for force-heavy loco-manipulation.
+  limitation: Upper/lower split; forces assumed at end effectors.
+- id: '2505.03738'
+  name: AMO
+  title: 'AMO: Adaptive Motion Optimization for Hyper-Dexterous Humanoid Whole-Body Control'
+  venue: RSS 2025*
+  depth: A
+  novelty: Hybrid trajectory-optimization data + RL policy enabling large torso/height workspace for teleop and autonomy.
+  limitation: Command space (EE + torso orientation/height) is teleop-centric; lower-body expressiveness limited.
+- id: '2504.16843'
+  name: LDM Loco-Manip
+  title: Physically Consistent Humanoid Loco-Manipulation using Latent Diffusion Models
+  venue: arXiv
+  depth: T
+  novelty: Latent diffusion generates physically consistent loco-manipulation trajectories.
+  limitation: Generation, not closed-loop control; tracking stage required.
+- id: '2503.05652'
+  name: BRS
+  title: 'BEHAVIOR Robot Suite: Streamlining Real-World Whole-Body Manipulation for Everyday Household Activities'
+  venue: CoRL 2025
+  depth: T
+  novelty: Open hardware/teleop/learning stack for wheeled bimanual whole-body household tasks.
+  limitation: Wheeled base, not legged; transfer to bipeds not addressed.

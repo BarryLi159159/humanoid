@@ -1,0 +1,274 @@
+topic: robust
+papers:
+- id: '2602.16511'
+  name: VIGOR
+  title: 'VIGOR: Visual Goal-In-Context Inference for Unified Humanoid Fall Safety'
+  venue: arXiv
+  depth: T
+  novelty: Unifies fall prevention/mitigation/recovery using visual goals inferred in context.
+  limitation: Falls in cluttered environments with unseen obstacles remain hard to predict.
+- id: '2602.08594'
+  name: MOSAIC
+  title: 'MOSAIC: Bridging the Sim-to-Real Gap in Generalist Humanoid Motion Tracking and Teleoperation with Rapid Residual Adaptation'
+  venue: arXiv
+  depth: T
+  novelty: Rapid residual adaptation on top of a generalist tracker closes sim-to-real gaps for tracking and teleop.
+  limitation: Needs real-world data for each adaptation round.
+- id: '2602.01515'
+  name: RAPT
+  title: 'RAPT: Model-Predictive Out-of-Distribution Detection and Failure Diagnosis for Sim-to-Real Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Model-predictive OOD detection flags and diagnoses sim-to-real failures before they happen.
+  limitation: Detection, not correction; false positives can halt useful behavior.
+- id: '2602.00401'
+  name: ZEST
+  title: 'ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control'
+  venue: arXiv
+  depth: T
+  novelty: Zero-shot transfer of athletic skills across embodiments/sim-to-real.
+  limitation: Zero-shot scope bounded by training randomization.
+- id: '2601.21363'
+  name: LIFT
+  title: Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control
+  venue: ICLR 2026
+  depth: T
+  novelty: Large-scale pretraining in sim followed by sample-efficient finetuning for new tasks/real; code released.
+  limitation: Finetuning still needs task rewards and some real interaction.
+- id: '2512.14689'
+  name: CHIP
+  title: 'CHIP: Adaptive Compliance for Humanoid Control through Hindsight Perturbation'
+  venue: arXiv
+  depth: T
+  novelty: Hindsight perturbation augmentation teaches policies adaptive compliance without force sensors.
+  limitation: Compliance inferred from proprioception; no task-level stiffness intent.
+- id: '2512.12230'
+  name: Cross-Morph Get-Up
+  title: 'Learning to Get Up Across Morphologies: Zero-Shot Recovery with a Unified Humanoid Policy'
+  venue: arXiv
+  depth: T
+  novelty: Single get-up policy that transfers zero-shot across humanoid morphologies.
+  limitation: Recovery success on morphologies far from training is limited.
+- id: '2512.01336'
+  name: Self-Protective Falling
+  title: Discovering Self-Protective Falling Policy for Humanoid Robot via Deep Reinforcement Learning
+  venue: arXiv
+  depth: T
+  novelty: RL discovers falling strategies that minimize damage.
+  limitation: Damage proxies in sim may not match real hardware damage.
+- id: '2511.18509'
+  name: SafeFall
+  title: 'SafeFall: Learning Protective Control for Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Predicts imminent falls and switches to protective control.
+  limitation: Fall prediction horizon is short.
+- id: '2511.10635'
+  name: Robot Crash Course
+  title: 'Robot Crash Course: Learning Soft and Stylized Falling'
+  venue: arXiv
+  depth: T
+  novelty: Learns soft, controllable (stylized) falls, with user-specified end poses.
+  limitation: Primarily small/character-like robots.
+- id: '2511.07407'
+  name: Fall-Safety Few Demos
+  title: Unified Humanoid Fall-Safety Policy from a Few Demonstrations
+  venue: arXiv
+  depth: T
+  novelty: Few demonstrations seed a unified fall-safety policy.
+  limitation: Demonstration coverage of fall directions limits generality.
+- id: '2510.01708'
+  name: PolySim
+  title: 'PolySim: Bridging the Sim-to-Real Gap for Humanoid Control via Multi-Simulator Dynamics Randomization'
+  venue: arXiv
+  depth: T
+  novelty: Trains across multiple simulators simultaneously as a form of dynamics randomization.
+  limitation: Multiple simulators increase engineering cost; shared biases remain.
+- id: '2508.12252'
+  name: Robot Trains Robot
+  title: 'Robot Trains Robot: Automatic Real-World Policy Adaptation and Learning for Humanoids'
+  venue: arXiv
+  depth: T
+  novelty: Robot arm acts as teacher/safety harness enabling autonomous real-world humanoid learning.
+  limitation: Requires dedicated support hardware; small robots demonstrated.
+- id: '2507.08303'
+  name: Selective Adversarial Training
+  title: 'Keep on Going: Learning Robust Humanoid Motion Skills via Selective Adversarial Training'
+  venue: arXiv
+  depth: T
+  novelty: Adversarial perturbations applied selectively to harden motion skills.
+  limitation: Adversary strength tuning trades off with nominal performance.
+- id: '2505.14266'
+  name: SPI-Active
+  title: Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning
+  venue: CoRL 2025 (Oral)
+  depth: T
+  novelty: Sampling-based system ID with actively chosen exploration trajectories improves sim-to-real.
+  limitation: Identifies parametric models; unmodeled effects remain.
+- id: '2505.07294'
+  name: HuB
+  title: 'HuB: Learning Extreme Humanoid Balance'
+  venue: CoRL 2025 (Oral)
+  depth: A
+  novelty: Reference refinement + balance-aware training for extreme balance poses (e.g., one-leg) with robustness to pushes.
+  limitation: Quasi-static balance motions; dynamic transitions out of scope.
+- id: '2504.06585'
+  name: Torque Perturbation
+  title: Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection
+  venue: arXiv
+  depth: T
+  novelty: Injects state-dependent torque perturbations as a richer alternative to parameter randomization.
+  limitation: Perturbation distribution chosen heuristically.
+- id: '2502.12152'
+  name: HumanUP
+  title: Learning Getting-Up Policies for Real-World Humanoid Robots
+  venue: RSS 2025
+  depth: A
+  novelty: Two-stage curriculum learns getting-up from diverse fallen postures (supine/prone, slopes).
+  limitation: Separate from locomotion; transition into walking handled externally.
+- id: '2502.08378'
+  name: HoST
+  title: Learning Humanoid Standing-up Control across Diverse Postures
+  venue: RSS 2025
+  depth: T
+  novelty: Multi-critic RL with smoothness regularization for standing up across postures and terrains.
+  limitation: Standing-up task only.
+- id: '2502.01143'
+  name: ASAP
+  title: 'ASAP: Aligning Simulation and Real-World Physics for Learning Agile Humanoid Whole-Body Skills'
+  venue: RSS 2025
+  depth: A
+  novelty: Pretrain in sim, collect real rollouts, learn a delta-action model of the dynamics gap, finetune in the corrected sim.
+  limitation: Delta model is skill-specific and needs real rollouts; long-horizon/general-library use unclear.
+topic2: sports
+papers2:
+- id: LATENT
+  link: https://zzk273.github.io/LATENT/
+  date: '2026.03'
+  name: LATENT
+  title: 'LATENT: Learning Athletic Humanoid Tennis Skills from Imperfect Human Motion Data'
+  venue: arXiv
+  depth: T
+  novelty: Learns tennis strokes from imperfect human motion data rather than clean mocap.
+  limitation: Single sport; ball perception and rally play are the hard parts.
+- id: '2602.08370'
+  name: Human-Like Badminton
+  title: Learning Human-Like Badminton Skills for Humanoid Robots
+  venue: arXiv
+  depth: T
+  novelty: Human motion priors make badminton strokes human-like on a humanoid.
+  limitation: Shuttle perception/prediction bottleneck; task-specific.
+- id: '2602.05310'
+  name: Soccer Progressive
+  title: 'Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework'
+  venue: arXiv
+  depth: T
+  novelty: Progressive curriculum from perception to action for soccer skills.
+  limitation: Single-agent skills; team play not addressed.
+- id: '2602.03205'
+  name: HUSKY
+  title: 'HUSKY: Humanoid Skateboarding System via Physics-Aware Whole-Body Control'
+  venue: arXiv
+  depth: T
+  novelty: Physics-aware whole-body control for riding a skateboard (underactuated moving support).
+  limitation: Very narrow task; board dynamics specific.
+- id: '2601.22517'
+  name: RoboStriker
+  title: 'RoboStriker: Hierarchical Decision-Making for Autonomous Humanoid Boxing'
+  venue: arXiv
+  depth: T
+  novelty: Hierarchical decision-making over boxing skills against opponents.
+  limitation: Opponent modeling and safety in contact sports.
+- id: '2512.06571'
+  name: Agile Striker
+  title: Learning Agile Striker Skills for Humanoid Soccer Robots from Noisy Sensory Input
+  venue: arXiv
+  depth: T
+  novelty: Striker skills robust to noisy ball perception.
+  limitation: Soccer-specific.
+- id: '2511.11218'
+  name: WB Badminton
+  title: Humanoid Whole-Body Badminton via Multi-Stage Reinforcement Learning
+  venue: arXiv
+  depth: T
+  novelty: Multi-stage RL for whole-body badminton hitting.
+  limitation: Task-specific policy.
+- id: '2511.03996'
+  name: Vision Soccer
+  title: Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots
+  venue: arXiv
+  depth: T
+  novelty: Vision-driven reactive soccer skills end to end.
+  limitation: Perception latency limits reaction speed.
+- id: '2510.18002'
+  name: Humanoid Goalkeeper
+  title: 'Humanoid Goalkeeper: Learning from Position Conditioned Task-Motion Constraints'
+  venue: arXiv
+  depth: T
+  novelty: Position-conditioned task-motion constraints for fast goalkeeping motions.
+  limitation: Ball trajectory prediction dependent.
+- id: '2509.21690'
+  name: Versatile Table Tennis
+  title: 'Towards Versatile Humanoid Table Tennis: Unified Reinforcement Learning with Prediction Augmentation'
+  venue: arXiv
+  depth: T
+  novelty: Unified RL with ball-prediction augmentation for table tennis.
+  limitation: Table tennis only.
+- id: '2508.21043'
+  name: HITTER
+  title: 'HITTER: A HumanoId Table TEnnis Robot via Hierarchical Planning and Learning'
+  venue: arXiv
+  depth: T
+  novelty: Model-based planner for ball interception + learned whole-body hitting controller; sustained real rallies.
+  limitation: External mocap for ball tracking; single sport.
+- id: '2502.10894'
+  name: Athletic Loco-Manip Sim2Real
+  title: Bridging the Sim-to-Real Gap for Athletic Loco-Manipulation
+  venue: arXiv
+  depth: T
+  novelty: Actuator modeling/sim-to-real techniques targeted at athletic loco-manipulation.
+  limitation: Actuator models are hardware-specific.
+topic3: bench
+papers3:
+- id: '2608.13555'
+  name: HumanTracker
+  title: 'HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark'
+  venue: arXiv
+  depth: A
+  novelty: Benchmark for motion tracking with human-aligned metrics, spanning GMT/SONIC/Humanoid-GPT-style systems.
+  limitation: Sim-based; human-alignment metrics need validation against real-robot quality.
+- id: '2603.06181'
+  name: Motion Turing Test
+  title: 'Towards Motion Turing Test: Evaluating Human-Likeness in Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Human-perception-based protocol for evaluating human-likeness of robot motion.
+  limitation: Subjective; costly to scale.
+- id: '2601.02078'
+  name: Genie Sim 3.0
+  title: 'Genie Sim 3.0: A High-Fidelity Comprehensive Simulation Platform for Humanoid Robot'
+  venue: arXiv
+  depth: T
+  novelty: High-fidelity humanoid simulation platform with task and data-generation tooling.
+  limitation: Platform-level; sim-to-real validation per task still needed.
+- id: '2512.07248'
+  name: Motion Difficulty Bench
+  title: Benchmarking Humanoid Imitation Learning with Motion Difficulty
+  venue: arXiv
+  depth: T
+  novelty: Stratifies tracking benchmarks by motion difficulty.
+  limitation: Difficulty metric is proxy-based.
+- id: '2510.26236'
+  name: PHUMA
+  title: 'PHUMA: Physically-Grounded Humanoid Locomotion Dataset'
+  venue: arXiv
+  depth: T
+  novelty: Large human-video-derived motion dataset filtered/fixed for physical plausibility on humanoids.
+  limitation: Physically grounded kinematics, not dynamics-verified on hardware.
+- id: '2510.08807'
+  name: Humanoid Everyday
+  title: 'Humanoid Everyday: A Comprehensive Robotic Dataset for Open-World Humanoid Manipulation'
+  venue: arXiv
+  depth: T
+  novelty: Large real humanoid manipulation dataset with evaluation platform.
+  limitation: Mostly upper-body; loco-manipulation coverage limited.

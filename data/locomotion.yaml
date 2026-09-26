@@ -1,0 +1,256 @@
+topic: loco
+papers:
+- id: '2609.28960'
+  name: Echo in the Steps
+  title: 'Echo in the Steps: Learning Perceptive Humanoid Parkour with Gated Memory'
+  venue: arXiv
+  depth: A
+  novelty: Depth-only parkour on sparse footholds via saliency-guided gated temporal memory plus an alternation (symmetry) loss.
+  limitation: Alternating-gait prior may hurt asymmetric maneuvers; terrain classes limited to sparse-foothold courses.
+- id: '2606.10449'
+  name: GuideWalk
+  title: 'GuideWalk: Learning Unified Autonomous Navigation and Locomotion for Humanoid Robots across Versatile Terrains'
+  venue: arXiv
+  depth: T
+  novelty: Unifies navigation and terrain locomotion in one learned policy.
+  limitation: Navigation range and map memory limited compared with classical planners.
+- id: '2606.05880'
+  name: TAGA
+  title: 'TAGA: Terrain-Aware Active Gaze Learning for Generalizable Agile Humanoid Locomotion'
+  venue: arXiv
+  depth: T
+  novelty: Learns where to look (active gaze) jointly with agile locomotion.
+  limitation: Requires an actuated head/camera; gaze-locomotion co-training adds complexity.
+- id: '2606.05873'
+  name: LadderMan
+  title: 'LadderMan: Learning Humanoid Perceptive Ladder Climbing'
+  venue: arXiv
+  depth: T
+  novelty: Perceptive ladder climbing with coordinated hand-foot contacts.
+  limitation: Single structure type; grip reliability depends on hand hardware.
+- id: '2605.30770'
+  name: SSR
+  title: 'SSR: Scaling Surefooted and Symmetric Humanoid Traversal to the Open World'
+  venue: arXiv
+  depth: T
+  novelty: Scales surefooted, symmetric perceptive traversal to open-world terrain.
+  limitation: Symmetry priors may restrict agile asymmetric skills.
+- id: '2605.25782'
+  name: ParkourFormer
+  title: 'ParkourFormer: Integrating Predictive Supervision and Sequence Modeling into Parkour Locomotion'
+  venue: arXiv
+  depth: T
+  novelty: Sequence model with predictive (future-state) supervision for parkour.
+  limitation: Transformer inference latency on onboard compute.
+- id: '2604.17335'
+  name: MotionGen+Track Loco
+  title: Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking
+  venue: RA-L 2026
+  depth: A
+  novelty: Generator samples human-like whole-body locomotion; tracker executes; generator is finetuned with the tracker critic's value.
+  limitation: Behavior diversity bounded by the motion dataset behind the generator.
+- id: '2603.03067'
+  name: CMoE
+  title: 'CMoE: Contrastive Mixture of Experts for Motion Control and Terrain Adaptation of Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Contrastive objectives specialize MoE experts by terrain.
+  limitation: Expert routing may fail on terrain mixtures not seen in training.
+- id: '2602.15827'
+  name: Perceptive Humanoid Parkour
+  title: 'Perceptive Humanoid Parkour: Chaining Dynamic Human Skills via Motion Matching'
+  venue: arXiv
+  depth: T
+  novelty: Motion matching chains dynamic human skills (vault, climb) conditioned on perceived terrain.
+  limitation: Skill set limited to captured human motions; transitions rely on matching quality.
+- id: '2602.11143'
+  name: APEX
+  title: 'APEX: Learning Adaptive High-Platform Traversal for Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Climbing onto/off high platforms using whole-body contacts.
+  limitation: Specific obstacle class.
+- id: '2602.06445'
+  name: ECO
+  title: 'ECO: Energy-Constrained Optimization with Reinforcement Learning for Humanoid Walking'
+  venue: arXiv
+  depth: T
+  novelty: Treats energy as a constraint (not reward term) in RL for efficient walking; code released.
+  limitation: Energy model approximations; flat-ground focus.
+- id: '2602.06382'
+  name: Now You See That
+  title: 'Now You See That: Learning End-to-End Humanoid Locomotion from Raw Pixels'
+  venue: arXiv
+  depth: T
+  novelty: End-to-end locomotion from raw pixels instead of heightmaps/depth.
+  limitation: Visual sim-to-real gap; rendering cost in training.
+- id: '2602.05791'
+  name: Cross-Humanoid Loco
+  title: Scalable and General Whole-Body Control for Cross-Humanoid Locomotion
+  venue: arXiv
+  depth: T
+  novelty: One locomotion policy across many humanoid morphologies.
+  limitation: New morphologies far from the training distribution still need finetuning.
+- id: '2602.03002'
+  name: RPL
+  title: 'RPL: Learning Robust Humanoid Perceptive Locomotion on Challenging Terrains'
+  venue: arXiv
+  depth: T
+  novelty: Robust perceptive locomotion recipe for challenging terrains.
+  limitation: Perception failures (reflective/deformable surfaces) remain.
+- id: '2602.02331'
+  name: TTT-Parkour
+  title: 'TTT-Parkour: Rapid Test-Time Training for Perceptive Robot Parkour'
+  venue: arXiv
+  depth: T
+  novelty: Test-time training quickly adapts a parkour policy to a newly seen course.
+  limitation: Requires scanning/reconstructing the course before execution.
+- id: '2601.10365'
+  name: FastStair
+  title: 'FastStair: Learning to Run Up Stairs with Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: High-speed stair ascent for humanoids.
+  limitation: Stairs only; descent at speed is harder.
+- id: '2601.08485'
+  name: AME-2
+  title: 'AME-2: Agile and Generalized Legged Locomotion via Attention-Based Neural Map Encoding'
+  venue: arXiv
+  depth: T
+  novelty: Attention-based map encoding for generalized agile legged locomotion.
+  limitation: Map-based pipeline depends on mapping quality.
+- id: '2601.07718'
+  name: Hiking in the Wild
+  title: 'Hiking in the Wild: A Scalable Perceptive Parkour Framework for Humanoids'
+  venue: arXiv
+  depth: T
+  novelty: Scalable perceptive framework for in-the-wild hiking/parkour terrain.
+  limitation: Natural terrain variability (mud, foliage) poorly modeled in sim.
+- id: '2601.07701'
+  name: Deep Whole-body Parkour
+  title: Deep Whole-body Parkour
+  venue: arXiv
+  depth: T
+  novelty: Whole-body (hands + feet) parkour instead of feet-only traversal.
+  limitation: Contact-rich parkour is hard to verify safely on hardware.
+- id: '2601.06286'
+  name: PLANC
+  title: 'Walk the PLANC: Physics-Guided RL for Agile Humanoid Locomotion on Constrained Footholds'
+  venue: arXiv
+  depth: T
+  novelty: Physics-guided (reduced-model) RL for constrained footholds.
+  limitation: Reduced-order model assumptions limit whole-body agility.
+- id: '2512.01996'
+  name: Loco in 15 Minutes
+  title: Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
+  venue: arXiv
+  depth: T
+  novelty: Fast training recipe producing deployable humanoid locomotion in ~15 minutes.
+  limitation: Speed trades against behavior richness; basic walking scope.
+- id: '2512.00971'
+  name: H-Zero
+  title: 'H-Zero: Cross-Humanoid Locomotion Pretraining Enables Few-shot Novel Embodiment Transfer'
+  venue: arXiv
+  depth: T
+  novelty: Pretraining across humanoids enables few-shot transfer to a new embodiment.
+  limitation: Few-shot still needs target-robot data.
+- id: '2511.14625'
+  name: Gallant
+  title: 'Gallant: Voxel Grid-based Humanoid Locomotion and Local-navigation across 3D Constrained Terrains'
+  venue: arXiv
+  depth: T
+  novelty: Voxel-grid perception handles overhangs and 3D constrained spaces, not just 2.5D heightmaps.
+  limitation: Voxel resolution vs compute trade-off onboard.
+- id: '2510.15352'
+  name: GaussGym
+  title: 'GaussGym: An open-source real-to-sim framework for learning locomotion from pixels'
+  venue: arXiv
+  depth: T
+  novelty: Gaussian-splat real-to-sim environments for photorealistic pixel-based locomotion training.
+  limitation: Splat scenes are visual only; physics geometry must be separately approximated.
+- id: '2510.07152'
+  name: DPL
+  title: 'DPL: Depth-only Perceptive Humanoid Locomotion via Realistic Depth Synthesis and Cross-Attention Terrain Reconstruction'
+  venue: RA-L 2026
+  depth: T
+  novelty: Realistic depth-noise synthesis + cross-attention terrain reconstruction for depth-only locomotion.
+  limitation: Depth noise models are camera-specific.
+- id: '2509.19573'
+  name: CLF Running
+  title: 'Chasing Stability: Humanoid Running via Control Lyapunov Function Guided RL'
+  venue: arXiv
+  depth: T
+  novelty: Control Lyapunov function terms guide RL toward stable running.
+  limitation: CLF derived from reduced models; blind locomotion only.
+- id: '2508.01247'
+  name: Symmetry-Equivariant Loco
+  title: Coordinated Humanoid Robot Locomotion with Symmetry Equivariant Reinforcement Learning Policy
+  venue: AAAI 2026
+  depth: T
+  novelty: Symmetry-equivariant policy architecture for coordinated gaits.
+  limitation: Hard symmetry constraints limit asymmetric tasks.
+- id: '2508.03068'
+  name: Hand-Eye Delivery
+  title: 'Hand-Eye Autonomous Delivery: Learning Humanoid Navigation, Locomotion and Reaching'
+  venue: CoRL 2025
+  depth: T
+  novelty: Learns navigation, locomotion and reaching jointly for delivery from egocentric vision.
+  limitation: Reaching-level manipulation only.
+- id: LocoFormer
+  link: https://generalist-locomotion.github.io/
+  date: '2025.09'
+  name: LocoFormer
+  title: 'LocoFormer: Generalist Locomotion via Long-Context Adaptation'
+  venue: CoRL 2025 (Oral)
+  depth: A
+  novelty: Long-context Transformer adapts in-context across embodiments and disturbances without explicit system ID.
+  limitation: Context length and inference cost onboard; adaptation limited to what episodes reveal.
+- id: '2506.08840'
+  name: MoRE
+  title: 'MoRE: Mixture of Residual Experts for Humanoid Lifelike Gaits Learning on Complex Terrains'
+  venue: arXiv
+  depth: T
+  novelty: Residual experts add lifelike gait styles on top of terrain locomotion.
+  limitation: Style set fixed by expert data.
+- id: '2505.22642'
+  name: FastTD3
+  title: 'FastTD3: Simple, Fast, and Capable Reinforcement Learning for Humanoid Control'
+  venue: arXiv
+  depth: T
+  novelty: Simple off-policy TD3 recipe with massive parallelism solving humanoid benchmarks fast.
+  limitation: Mostly sim benchmarks; sim-to-real evidence limited.
+- id: '2505.18780'
+  name: One Policy Many Worlds
+  title: 'One Policy but Many Worlds: A Scalable Unified Policy for Versatile Humanoid Locomotion'
+  venue: arXiv
+  depth: T
+  novelty: Unified policy across many terrains/tasks via scalable multi-environment training.
+  limitation: Unified policies can underperform specialists on extreme terrains.
+- id: '2505.06218'
+  name: Let Humanoids Hike
+  title: Let Humanoids Hike! Integrative Skill Development on Complex Trails
+  venue: arXiv
+  depth: T
+  novelty: Integrates perception, locomotion and navigation skills for real trail hiking.
+  limitation: Trail diversity in evaluation is small.
+- id: '2503.00692'
+  name: Perceptive Humanoid Loco
+  title: Learning Perceptive Humanoid Locomotion over Challenging Terrain
+  venue: IROS 2025
+  depth: T
+  novelty: Perceptive humanoid locomotion over challenging terrain with terrain reconstruction.
+  limitation: Mapping latency during fast motion.
+- id: '2502.14814'
+  name: VB-Com
+  title: 'VB-Com: Learning Vision-Blind Composite Humanoid Locomotion Against Deficient Perception'
+  venue: arXiv
+  depth: T
+  novelty: Switches between vision-based and blind policies when perception degrades.
+  limitation: Switching detection may lag sudden perception failures.
+- id: '2502.10363'
+  name: BeamDojo
+  title: 'BeamDojo: Learning Agile Humanoid Locomotion on Sparse Footholds'
+  venue: RSS 2025
+  depth: A
+  novelty: Sampling-based foothold reward + two-stage (soft-to-hard terrain) RL for sparse footholds like beams/stones.
+  limitation: Relies on accurate elevation mapping; limited to foothold-constrained terrains.

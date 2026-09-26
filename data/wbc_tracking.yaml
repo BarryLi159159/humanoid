@@ -1,0 +1,331 @@
+topic: wbc
+papers:
+- id: '2609.08511'
+  name: PGMT
+  title: 'PGMT: Perceptive General Motion Tracking for Humanoid Robots'
+  venue: arXiv
+  depth: A
+  novelty: 'Two stages: flat-ground tracking + fall-recovery prior, then perception injection via learned motion-conditioned terrain ''glimpses'' and terrain-aware tracking relaxation; no terrain-matched references needed. One G1 policy for locomotion, teleop, tracking, recovery; 37 cm boxes; 87.8% vs 40.0% (blind) sim completion.'
+  limitation: Elevation maps encode geometry but not semantics/affordances (authors); relaxation only on lower body, so upper-body motion stays collision-unaware; needs a LiDAR elevation-mapping pipeline.
+- id: '2609.09918'
+  name: ViBe
+  title: 'ViBe: Visual Behavior Adaptation for Perceptive Humanoid Whole-Body Control'
+  venue: arXiv
+  depth: A
+  novelty: 'Post-training recipe: frozen pretrained ViT + multi-query cross-attention extractor injected into a frozen SONIC decoder via LoRA, trained directly with PPO (no teacher-student); reaches ~90-95% of privileged-policy reward; zero-shot real parkour, cube reorientation, loco-manipulation, dodgeball.'
+  limitation: One adapted policy per task; dynamic visual distractors trigger false reactions (dodges the thrower's head); planner and controller are not trained in closed loop (authors).
+- id: '2608.01410'
+  name: GenTrack
+  title: 'GenTrack: Physical Alignment for Robot-Native Motion Generation and Zero-Shot Humanoid Tracking'
+  venue: arXiv
+  depth: A
+  novelty: 'Online bidirectional loop: tracker rollouts give group-relative rewards that align a robot-native text-to-motion generator, while generated references expand tracker training (anchoring + rehearsal against drift); shown on both ProtoMotions and SONIC backbones.'
+  limitation: Simulation-only (G1) evaluation; execution feedback can bias the generator toward conservative motions; ProtoMotions branch shows split-dependent trade-offs.
+- id: '2607.20110'
+  name: Extreme-RGMT
+  title: 'Extreme-RGMT: Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control'
+  venue: arXiv
+  depth: A
+  novelty: 'Builds on RGMT: two-stage continual learning that adds highly dynamic skills to an existing generalist tracker without catastrophic forgetting.'
+  limitation: Each new dynamic skill still needs a dedicated learning stage; forgetting over long sequences of additions is not the focus.
+- id: '2607.04837'
+  name: Athena-WBC
+  title: 'Athena-WBC: Capability-Aligned Policy Experts for Long-Tail Humanoid Whole-Body Control'
+  venue: arXiv
+  depth: A
+  novelty: Diagnoses long-tail failures as recipe capability mismatch; dynamic/balance experts with tailored penalties, then motion-routed DAgger + RL finetune.
+  limitation: Baseline is a SONIC-recipe reproduction (not the released model); gains on the long tail are moderate.
+- id: '2606.29209'
+  name: AnyBody
+  title: 'AnyBody: Free-Form Whole-Body Humanoid Control from Arbitrary Keypoint Guidance'
+  venue: arXiv
+  depth: A
+  novelty: Spherical latent motion space addressed by a masked-attention keypoint encoder; any keypoint subset drives the robot, retargeting-free.
+  limitation: Latent bottleneck trades precision for flexibility; sparse inputs leave the unobserved body to the prior's guess.
+- id: '2606.27581'
+  name: SceneBot
+  title: 'SceneBot: Contact-Prompted General Humanoid Whole Body Tracking with Scene-Interaction'
+  venue: arXiv
+  depth: A
+  novelty: Contact labels as extra prompts unify free-space tracking with scene interaction; data engine synthesizes scenes from robot motion.
+  limitation: Needs contact prompts at runtime; the autonomous high-level contact planner is left to future work.
+- id: '2606.25706'
+  name: Async Task-Space Tracking
+  title: Learning Asynchronous Upper-body Task-space Trajectory Tracking Policy for Humanoid Robots
+  venue: arXiv
+  depth: A
+  novelty: Time-indexed conditioning on a cached future trajectory handles low-rate planner outputs; MPC completes sparse references.
+  limitation: Upper-body task-space only; planner and controller are trained separately (end-to-end left to future work).
+- id: '2606.16696'
+  name: VENOM
+  title: 'VENOM: cross-embodiment general motion tracker'
+  venue: arXiv
+  depth: T
+  novelty: Single tracker conditioned on embodiment to serve multiple humanoid morphologies.
+  limitation: Cross-embodiment generalization is limited to the morphology distribution seen in training.
+- id: '2606.10340'
+  name: OMG
+  title: 'OMG: Omni-Modal Motion Generation for Generalist Humanoid Control'
+  venue: arXiv
+  depth: T
+  novelty: One motion generator accepting multiple command modalities (text, sparse targets, etc.) feeding a generalist controller.
+  limitation: Two-stage generator + tracker stack; generator outputs are not guaranteed to be physically trackable.
+- id: '2606.08059'
+  name: Perceptive BFM
+  title: 'Perceptive Behavior Foundation Model: Adapting Human Motion Priors to Robot-Centric Terrain'
+  venue: arXiv
+  depth: A
+  novelty: Offline terrain-conformal reference synthesis (footholds, swing optimization, root reconstruction, collision repair, IK) supervises a blind teacher; a vision student keeps the raw motion as command and learns identity-gated terrain residuals. Sim completion 27.3% -> 55.1%.
+  limitation: Kinematic synthesis assumes static rigid height fields; adaptation is foot-centric so arms/torso can hit obstacles (authors); hardware results are qualitative only.
+- id: '2606.03985'
+  name: Humanoid-GPT
+  title: 'Humanoid-GPT: Scaling Data and Structure for Zero-Shot Motion Tracking'
+  venue: CVPR 2026
+  depth: A
+  novelty: Causal Transformer tracker distilled (DAgger) from cluster-wise RL experts over 2B frames; HME clustering balances the long tail.
+  limitation: SONIC comparison is mainly qualitative video; data scale and architecture gains are confounded; 'GPT' is a causal tracker, not generative pretraining.
+- id: '2606.00374'
+  name: Constrained WBT
+  title: Constrained Whole-Body Tracking for Humanoid Robots
+  venue: arXiv
+  depth: A
+  novelty: Wraps an unmodified tracking policy with CBF-based filters on the input reference and output dynamics for safety.
+  limitation: Guarantees only hold for explicitly modeled constraints; filtering can make aggressive references conservative.
+- id: '2605.23733'
+  name: Any2Any
+  title: 'Any2Any: cross-embodiment humanoid motion tracking'
+  venue: arXiv
+  depth: T
+  novelty: Tracks motions across different humanoid embodiments with a shared policy.
+  limitation: Real-robot validation typically covers only a few platforms; unseen morphologies remain hard.
+- id: '2605.15336'
+  name: HoloMotion-1
+  title: HoloMotion-1 Technical Report
+  venue: arXiv
+  depth: A
+  novelty: Sparse-MoE Transformer tracker with KV-cache; 2000+ h corpus mostly reconstructed from in-the-wild video; 0.4B params, open weights.
+  limitation: Evaluation protocol is self-defined (MuJoCo); video-reconstructed references carry noise and physically implausible artifacts.
+- id: '2603.27756'
+  name: Heracles
+  title: 'Heracles: Bridging Precise Tracking and Generative Synthesis for General Humanoid Control'
+  venue: arXiv
+  depth: A
+  novelty: 'State-conditioned flow-matching ''middleware'' between reference and FSQ-token tracker: near-identity when on-reference, synthesizes recovery keyframes when state deviates. 90.6% completion vs 79.3% for released SONIC on their held-out set; 90% on fall-recovery clips.'
+  limitation: Receding-horizon replanning adds compute/latency; best variant needs global root position; all comparisons on the authors' own MuJoCo protocol; slightly higher joint error than the bare tracker.
+- id: '2602.23843'
+  name: OmniXtreme
+  title: 'OmniXtreme: Breaking the Generality Barrier in High-Dynamic Humanoid Control'
+  venue: arXiv
+  depth: A
+  novelty: Specialists distilled into a flow-matching base policy (DAgger), then a frozen-base residual under motor/power constraints for sim-to-real.
+  limitation: Needs per-motion specialists before distillation, so expert cost grows with library size; residual stage is hardware-specific.
+- id: '2602.23832'
+  name: OmniTrack
+  title: 'OmniTrack: General Motion Tracking via Physics-Consistent Reference'
+  venue: arXiv
+  depth: A
+  novelty: Privileged policy first rolls out physics-consistent references (removes floating/penetration), then a tracker learns those; hour-long real runs.
+  limitation: Reference-generation stage sits in the loop for teleop, adding compute/latency; quality bounded by the privileged generator.
+- id: '2602.11929'
+  name: FAST
+  title: General Humanoid Whole-Body Control via Pretraining and Fast Adaptation
+  venue: arXiv
+  depth: T
+  novelty: Parseval-constrained residual delta policy (orthogonality + KL) for fast OOD adaptation; CoM-aware observations/rewards for balance.
+  limitation: OOD motions still require an adaptation step; not a zero-shot solution.
+- id: '2602.04851'
+  name: PDF-HR
+  title: 'PDF-HR: Pose Distance Fields for Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Learned distance field over plausible robot poses as a prior/regularizer for control and motion generation.
+  limitation: A static pose prior does not encode dynamics or contact feasibility.
+- id: '2602.02960'
+  name: EAGSD
+  title: Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-Body Control
+  venue: arXiv
+  depth: T
+  novelty: Distills embodiment-specific specialists into one embodiment-conditioned generalist controller.
+  limitation: Needs a specialist per embodiment first; zero-shot transfer to new robots is limited.
+- id: '2512.19043'
+  name: EGM
+  title: 'EGM: Efficiently Learning General Motion Tracking Policy for High Dynamic Humanoid Whole-Body Control'
+  venue: arXiv
+  depth: A
+  novelty: 1-s motion-bin curriculum sampling + upper/lower-body decoupled MoE; 4.08 h curated data generalizes to 49 h test motions.
+  limitation: Relies on manual data curation; how the recipe behaves at SONIC-scale data is untested.
+- id: '2511.17373'
+  name: AMS
+  title: 'Agility Meets Stability: Versatile Humanoid Control with Heterogeneous Data'
+  venue: arXiv
+  depth: T
+  novelty: Mixes human mocap (agility) with synthetic balance data (stability) in one policy.
+  limitation: Synthetic balance data may not match real-world disturbance statistics.
+- id: '2511.07820'
+  name: SONIC
+  title: 'SONIC: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control'
+  venue: Science Robotics 2026
+  depth: A
+  novelty: Shows tracking scales with data/model/compute (100M+ frames); FSQ token interface + kinematic planner unifies VR, video, SMPL, and VLA commands.
+  limitation: MLP tracker; huge compute (21k GPU-h); interaction with objects/scenes is outside pure tracking.
+- id: '2511.06371'
+  name: Multi-Behavior Distillation
+  title: Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning
+  venue: arXiv
+  depth: T
+  novelty: Distills multiple behavior experts into one policy, then RL finetunes for adaptivity.
+  limitation: Behavior set fixed at distillation time; new behaviors require re-distillation.
+- id: '2511.04131'
+  name: BFM-Zero
+  title: 'BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning'
+  venue: ICLR 2026
+  depth: A
+  novelty: 'Forward-backward unsupervised RL on a real humanoid: one latent space for zero-shot tracking, goal reaching and reward optimization.'
+  limitation: Tracking fidelity lags supervised trackers; prompt/latent inference quality limits precise tasks.
+- id: '2510.25241'
+  name: One-shot WB Motion
+  title: One-shot Humanoid Whole-body Motion Learning
+  venue: arXiv
+  depth: T
+  novelty: Learns a new whole-body motion from a single demonstration.
+  limitation: One-shot learning struggles with highly dynamic or contact-rich motions far from the prior.
+- id: '2510.17792'
+  name: SoftMimic
+  title: 'SoftMimic: Learning Compliant Whole-body Control from Examples'
+  venue: arXiv
+  depth: A
+  novelty: 'IK-generated compliant motion augmentation: policy sees the original reference but is rewarded for the compliant target implied by the external wrench and a commanded stiffness (40-1000 N/m in one policy); roughly halves collision forces vs a stiff tracker.'
+  limitation: One policy per motion clip; wrenches only on the hands, one link at a time; kinematic (not dynamic) augmentation; the right stiffness must be chosen externally (authors).
+- id: '2510.14454'
+  name: AdaMimic
+  title: 'AdaMimic: Towards Adaptable Humanoid Control via Adaptive Motion Tracking'
+  venue: arXiv
+  depth: T
+  novelty: Tracks motions while adapting them (e.g., editing keyframes/constraints) so a reference can be adjusted to new task conditions.
+  limitation: Adaptation range is local around the reference; large task changes still need new data.
+- id: '2509.20717'
+  name: RobotDancing
+  title: 'RobotDancing: Residual-Action RL Enables Robust Long-Horizon Humanoid Motion Tracking'
+  venue: arXiv
+  depth: T
+  novelty: Residual-action formulation for stable minute-long tracking of dance sequences.
+  limitation: Long-horizon robustness shown on dance; interaction with objects/terrain untested.
+- id: '2509.16638'
+  name: KungfuBot2 (VMS)
+  title: 'KungfuBot 2: Learning Versatile Motion Skills for Humanoid Whole-Body Control'
+  venue: arXiv
+  depth: A
+  novelty: Orthogonal MoE reduces expert interference; hybrid local/global tracking objectives for minute-long stable sequences.
+  limitation: Generalist still trades off against per-skill specialists on the most dynamic motions; no object/scene interaction.
+- id: '2509.13833'
+  name: Any2Track
+  title: Track Any Motions under Any Disturbances
+  venue: arXiv
+  depth: A
+  novelty: Splits tracking (AnyTracker) from online dynamics adaptation (AnyAdapter) to handle pushes, terrain and physical-property changes.
+  limitation: Adapter handles dynamics shifts, not new contacts/objects; adaptation horizon is short.
+- id: '2509.13780'
+  name: BFM-Humanoid
+  title: Behavior Foundation Model for Humanoid Robots
+  venue: arXiv
+  depth: T
+  novelty: Pretrained behavior model used as a reusable prior across humanoid control tasks.
+  limitation: Downstream adaptation still needed; defining a universal command interface remains open.
+- id: '2508.19926'
+  name: FARM
+  title: 'FARM: Frame-Accelerated Augmentation and Residual Mixture-of-Experts for Physics-Based High-Dynamic Humanoid Control'
+  venue: arXiv
+  depth: T
+  novelty: Time-scaled (frame-accelerated) augmentation plus residual MoE to learn high-dynamic motions.
+  limitation: Primarily character-level/sim validation; hardware torque/velocity limits constrain real transfer.
+- id: '2508.09960'
+  name: GBC
+  title: 'GBC: Generalized Behavior-Cloning Framework for Whole-Body Humanoid Imitation'
+  venue: arXiv
+  depth: T
+  novelty: End-to-end framework (retarget -> train -> deploy) aimed at generalizing across humanoid embodiments.
+  limitation: Framework contribution; per-embodiment tuning still required for best performance.
+- id: '2508.08241'
+  name: BeyondMimic
+  title: 'BeyondMimic: From Motion Tracking to Versatile Humanoid Control via Guided Diffusion'
+  venue: Science Robotics 2026
+  depth: A
+  novelty: Highly accurate per-motion tracking recipe (open-source) + state-action diffusion distilled from trackers, steered by guidance for new tasks.
+  limitation: Per-motion trackers do not scale to huge libraries; diffusion guidance is costlier at runtime than a single policy.
+- id: '2507.15649'
+  name: EMP
+  title: 'EMP: Executable Motion Prior for Humanoid Robot Standing Upper-body Motion Imitation'
+  venue: arXiv
+  depth: T
+  novelty: Learns a prior that projects upper-body references to executable ones while standing.
+  limitation: Standing only; lower body is not part of the imitation problem.
+- id: '2507.07356'
+  name: UniTracker
+  title: 'UniTracker: Learning Universal Whole-Body Motion Tracker for Humanoid Robots'
+  venue: RA-L 2026
+  depth: A
+  novelty: Teacher -> CVAE universal policy whose partial-observation prior is aligned to a full-observation encoder, injecting global intent.
+  limitation: Three-stage pipeline; latent smoothing can blur fine, high-frequency motion detail.
+- id: '2506.14770'
+  name: GMT
+  title: 'GMT: General Motion Tracking for Humanoid Whole-Body Control'
+  venue: arXiv
+  depth: A
+  novelty: Single policy over the whole AMASS-scale library via adaptive sampling + MoE teacher-student; the default baseline since.
+  limitation: MLP-scale capacity; highly dynamic and long-tail motions degrade; no scene/object interaction.
+- id: '2506.12851'
+  name: KungfuBot
+  title: 'KungfuBot: Physics-Based Humanoid Whole-Body Control for Learning Highly-Dynamic Skills'
+  venue: NeurIPS 2025
+  depth: T
+  novelty: Physics-based filtering of references + adaptive tracking tolerance to learn highly dynamic kungfu/dance skills.
+  limitation: Per-skill policies; generalist version deferred to KungfuBot2.
+- id: '2506.12779'
+  name: BumbleBee
+  title: 'From Experts to a Generalist: Toward General Whole-Body Control for Humanoid Robots'
+  venue: arXiv
+  depth: T
+  novelty: Clusters motions, trains experts with sim-to-real refinement per cluster, then distills into one generalist.
+  limitation: Clustering granularity sets the expert count; cost scales with the number of clusters.
+- id: '2505.19463'
+  name: SMAP
+  title: 'SMAP: Self-supervised Motion Adaptation for Physically Plausible Humanoid Whole-body Control'
+  venue: arXiv
+  depth: T
+  novelty: Self-supervised module adapts infeasible human references into physically plausible robot motion.
+  limitation: Adaptation may alter motion style; plausibility is judged in simulation.
+- id: '2505.06584'
+  name: JAEGER
+  title: 'JAEGER: Dual-Level Humanoid Whole-Body Controller'
+  venue: arXiv
+  depth: T
+  novelty: Separates upper and lower body controllers with joint- and root-level interfaces for robustness.
+  limitation: Decoupling limits coordinated whole-body behaviors that need upper-lower synergy.
+- id: '2504.14305'
+  name: ALMI
+  title: Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning
+  venue: arXiv
+  depth: T
+  novelty: Adversarial training between lower-body locomotion and upper-body imitation policies; releases a large dataset.
+  limitation: Split-body formulation again limits whole-body coordination.
+- id: '2502.03206'
+  name: HugWBC
+  title: 'HugWBC: A Unified and General Humanoid Whole-Body Controller'
+  venue: arXiv
+  depth: T
+  novelty: Command-conditioned controller supporting many gaits (walk/jump/hop) and gait parameters plus upper-body intervention.
+  limitation: Command space is hand-designed; expressive human-like motions are outside its interface.
+- id: '2502.01465'
+  name: Embrace Contacts
+  title: 'Embrace Contacts: Humanoid Shadowing with Full Body Ground Contacts'
+  venue: CoRL 2025
+  depth: A
+  novelty: Discrete motion commands drive whole-body motions that use knees, hands, torso on the ground (rolling, crawling).
+  limitation: Collision simplifications in sim; limited to predefined command vocabulary.
+- id: '2601.23080'
+  name: RGMT
+  title: Robust and Generalized Humanoid Motion Tracking
+  venue: arXiv
+  depth: A
+  novelty: 'Dynamics-conditioned command aggregation: a causal history encoder queries cross-attention over the reference window to down-weight noisy/infeasible segments; fall recovery trained into the same policy; single-stage PPO on 3.5 h curated data. 94.6% success on video-derived references vs 72.4% (GMT) / 54.3% (Any2Track).'
+  limitation: No global localization, so long sequences drift in world frame (authors' future work); compared only against GMT/Any2Track, not SONIC-scale trackers.
